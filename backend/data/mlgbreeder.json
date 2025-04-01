@@ -1,0 +1,64 @@
+{
+  "name": "Их Бүүдэн",
+  "color": "Хүрэн",
+  "birthDate": "2010-01-01",
+  "birthPlace": "Ховд",
+  "registrationNumber": "MGL-2010-001",
+  "microchip": "123456789",
+  "brand": "ХБ",
+  "owner": "Б.Болд",
+  "breeder": "Б.Болд",
+  "registrationDate": "2010-01-01",
+  "parentage": {
+    "sire": null,
+    "dam": null
+  }
+},
+{
+  "name": "Хүрэн Гүү",
+  "color": "Хүрэн",
+  "birthDate": "2010-01-01",
+  "birthPlace": "Ховд",
+  "registrationNumber": "MGL-2010-002",
+  "microchip": "123456790",
+  "brand": "ХГ",
+  "owner": "Б.Болд",
+  "breeder": "Б.Болд",
+  "registrationDate": "2010-01-01",
+  "parentage": {
+    "sire": null,
+    "dam": null
+  }
+},
+{
+  "name": "Хонгор",
+  "color": "Хүрэн",
+  "birthDate": "2010-01-01",
+  "birthPlace": "Ховд",
+  "registrationNumber": "MGL-2010-003",
+  "microchip": "123456791",
+  "brand": "ХГ",
+  "owner": "Б.Болд",
+  "breeder": "Б.Болд",
+  "registrationDate": "2010-01-01",
+  "parentage": {
+    "sire": null,
+    "dam": null
+  }
+},
+{
+  "name": "Бор",
+  "color": "Хүрэн",
+  "birthDate": "2010-01-01",
+  "birthPlace": "Ховд",
+  "registrationNumber": "MGL-2010-004",
+  "microchip": "123456792",
+  "brand": "Б",
+  "owner": "Б.Болд",
+  "breeder": "Б.Болд",
+  "registrationDate": "2010-01-01",
+  "parentage": {
+    "sire": null,
+    "dam": null
+  }
+} 
