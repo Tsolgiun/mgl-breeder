@@ -1,62 +1,89 @@
-import { Card, CardMedia, CardContent, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const HorseCard = ({ horse, previewOnly = false }) => {
+  const { user } = useAuth();
+  const isOwner = user && horse.owner && user._id === horse.owner._id;
+
   return (
-    <Card sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-      <Box
-        sx={{
+    <Link 
+      to={previewOnly ? '#' : `/horse/${horse._id}`} 
+      className="horse-card card" 
+      style={{ textDecoration: 'none' }}
+    >
+      <div
+        style={{
           position: 'relative',
-          paddingTop: '100%', // 1:1 Aspect ratio container
+          paddingTop: '85%',
           width: '100%',
-          backgroundColor: 'grey.100' // Placeholder while loading
+          backgroundColor: 'var(--color-background)',
+          overflow: 'hidden'
         }}
       >
-        <CardMedia
-          component="img"
-          sx={{
+        <img
+          style={{
             position: 'absolute',
             top: 0,
             left: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'contain', // Show full image without cropping
-            backgroundColor: 'inherit'
+            objectFit: 'contain',
+            backgroundColor: 'inherit',
+            transition: 'transform 0.3s ease'
           }}
-          image={previewOnly ? horse : horse.imageUrl}
+          src={previewOnly ? horse : horse.imageUrl}
           alt={previewOnly ? "Horse" : horse.name}
         />
-      </Box>
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h6" component="h2">
+      </div>
+      <div className="horse-card-content">
+        <h3>
           {previewOnly ? "Mongolian Horse" : horse.name}
-        </Typography>
+        </h3>
         {previewOnly ? (
-          <Typography>
+          <p style={{ color: 'var(--color-text)' }}>
             A beautiful specimen of the hardy and historic Mongolian horse breed.
-          </Typography>
+          </p>
         ) : (
           <>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+            <p style={{ 
+              color: 'var(--color-text)',
+              marginBottom: '0.5rem',
+              fontSize: '0.95rem'
+            }}>
               Зүс: {horse.color}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+            </p>
+            <p style={{ 
+              color: 'var(--color-text)',
+              marginBottom: '0.5rem',
+              fontSize: '0.95rem'
+            }}>
               Төрсөн: {new Date(horse.birthDate).getFullYear()}
-            </Typography>
-            <Box sx={{ mt: 2 }}>
-              <Button
-                component={Link}
-                to={`/horse/${horse._id}`}
-                variant="outlined"
-                fullWidth
+            </p>
+            <p style={{ 
+              color: 'var(--color-text)',
+              marginBottom: '0.5rem',
+              fontSize: '0.95rem'
+            }}>
+              Эзэмшигч: {horse.owner?.username}
+            </p>
+            {isOwner && (
+              <div 
+                style={{
+                  display: 'inline-block',
+                  padding: '0.3rem 0.8rem',
+                  backgroundColor: 'var(--color-primary)',
+                  color: 'var(--color-secondary)',
+                  borderRadius: '16px',
+                  fontSize: '0.85rem'
+                }}
               >
-                Дэлгэрэнгүй
-              </Button>
-            </Box>
+                Миний морь
+              </div>
+            )}
           </>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </Link>
   );
 };
 

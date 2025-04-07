@@ -32,8 +32,10 @@ const horseSchema = mongoose.Schema(
       required: true,
     },
     owner: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
       required: true,
+      index: true,
     },
     breeder: {
       type: String,

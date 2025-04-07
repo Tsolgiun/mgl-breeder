@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import HorseProfile from './pages/HorseProfile';
+import UserProfile from './pages/UserProfile';
 import './App.css';
 
 const theme = createTheme({
@@ -31,6 +32,14 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/horse/:id" element={<HorseProfile />} />
+              <Route 
+                path="/profile" 
+                element={
+                  <PrivateRoute>
+                    <UserProfile />
+                  </PrivateRoute>
+                } 
+              />
               <Route path="/" element={<Home />} />
             </Routes>
           </div>

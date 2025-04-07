@@ -1,4 +1,3 @@
-import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -12,39 +11,62 @@ const Navbar = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, cursor: 'pointer' }}
-            onClick={() => navigate('/')}
-          >
-            MLG Breeder
-          </Typography>
+    <nav className="navbar">
+      <div className="navbar-container container">
+        <div 
+          className="navbar-brand"
+          onClick={() => navigate('/')}
+          style={{ cursor: 'pointer' }}
+        >
+          Mongolian Breeders
+        </div>
+        <div className="nav-links">
           {isAuthenticated ? (
             <>
-              <Typography sx={{ mr: 2 }}>
-                Welcome, {user.username}
-              </Typography>
-              <Button color="inherit" onClick={handleLogout}>
-                Logout
-              </Button>
+              <span 
+                style={{ 
+                  cursor: 'pointer',
+                  color: 'var(--color-secondary)',
+                  fontWeight: 500
+                }}
+                onClick={() => navigate('/profile')}
+              >
+                Тавтай морил, {user.username}
+              </span>
+              <button 
+                onClick={handleLogout}
+                style={{ 
+                  backgroundColor: 'transparent',
+                  color: 'var(--color-secondary)',
+                  boxShadow: 'none'
+                }}
+              >
+                Гарах
+              </button>
             </>
           ) : (
             <>
-              <Button color="inherit" onClick={() => navigate('/login')}>
+              <button 
+                onClick={() => navigate('/login')}
+                style={{ 
+                  backgroundColor: 'transparent',
+                  color: 'var(--color-secondary)',
+                  boxShadow: 'none'
+                }}
+              >
                 Login
-              </Button>
-              <Button color="inherit" onClick={() => navigate('/register')}>
+              </button>
+              <button 
+                onClick={() => navigate('/register')}
+                className="button"
+              >
                 Register
-              </Button>
+              </button>
             </>
           )}
-        </Toolbar>
-      </AppBar>
-    </Box>
+        </div>
+      </div>
+    </nav>
   );
 };
 

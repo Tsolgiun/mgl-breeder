@@ -71,11 +71,9 @@ const FileUpload = ({ onFileSelect, value, progress, error }) => {
   };
 
   return (
-    <div className="mb-4">
+    <div style={{ marginBottom: '1rem' }}>
       <div
-        className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer
-          ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}
-          ${error ? 'border-red-500' : ''}`}
+        className={`file-upload ${isDragging ? 'dragging' : ''} ${error ? 'error' : ''}`}
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -83,24 +81,28 @@ const FileUpload = ({ onFileSelect, value, progress, error }) => {
         onClick={() => fileInputRef.current.click()}
       >
         {preview || value ? (
-          <div className="relative">
+          <div className="preview-container">
             <img
               src={preview || value}
               alt="Preview"
-              className="max-h-48 mx-auto rounded-lg"
+              className="preview-image"
             />
             {progress !== undefined && progress < 100 && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-lg">
-                <div className="text-white font-semibold">
+              <div className="upload-progress">
+                <div className="progress-text">
                   Uploading... {progress}%
                 </div>
+                <div 
+                  className="progress-bar"
+                  style={{ width: `${progress}%` }}
+                ></div>
               </div>
             )}
           </div>
         ) : (
-          <div className="text-gray-500">
+          <div className="upload-placeholder">
             <p>Drop an image here or click to select</p>
-            <p className="text-sm mt-1">Maximum size: 5MB</p>
+            <p className="upload-subtitle">Maximum size: 5MB</p>
           </div>
         )}
       </div>
@@ -109,18 +111,95 @@ const FileUpload = ({ onFileSelect, value, progress, error }) => {
         ref={fileInputRef}
         onChange={handleFileInput}
         accept="image/*"
-        className="hidden"
+        style={{ display: 'none' }}
       />
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      {error && <p className="error-text">{error}</p>}
+
+      <style jsx="true">{`
+        .file-upload {
+          border: 2px dashed var(--color-primary);
+          border-radius: 8px;
+          padding: 2rem;
+          text-align: center;
+          cursor: pointer;
+          transition: var(--transition-default);
+          background-color: var(--color-white);
+        }
+
+        .file-upload:hover {
+          border-color: var(--color-accent);
+          background-color: rgba(191, 167, 128, 0.05);
+        }
+
+        .file-upload.dragging {
+          border-color: var(--color-accent);
+          background-color: rgba(191, 167, 128, 0.1);
+        }
+
+        .file-upload.error {
+          border-color: #dc2626;
+        }
+
+        .preview-container {
+          position: relative;
+          max-width: 100%;
+        }
+
+        .preview-image {
+          max-height: 200px;
+          margin: 0 auto;
+          border-radius: 8px;
+          box-shadow: var(--shadow-soft);
+        }
+
+        .upload-progress {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.7);
+          color: var(--color-white);
+          padding: 0.5rem;
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+
+        .progress-text {
+          font-size: 0.875rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .progress-bar {
+          height: 2px;
+          background-color: var(--color-accent);
+          transition: width 0.3s ease;
+        }
+
+        .upload-placeholder {
+          color: var(--color-text);
+        }
+
+        .upload-subtitle {
+          font-size: 0.875rem;
+          margin-top: 0.5rem;
+          color: var(--color-secondary);
+        }
+
+        .error-text {
+          color: #dc2626;
+          font-size: 0.875rem;
+          margin-top: 0.5rem;
+        }
+      `}</style>
     </div>
   );
 };
 
 FileUpload.propTypes = {
   onFileSelect: PropTypes.func.isRequired,
-  value: PropTypes.string, // Current image URL
-  progress: PropTypes.number, // Upload progress (0-100)
-  error: PropTypes.string, // Error message
+  value: PropTypes.string,
+  progress: PropTypes.number,
+  error: PropTypes.string,
 };
 
 export default FileUpload;

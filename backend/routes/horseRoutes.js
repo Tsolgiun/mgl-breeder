@@ -8,6 +8,7 @@ import {
   deleteHorse,
   getHorsePedigree,
   getHorseDescendants,
+  getHorsesByUser,
 } from '../controllers/horseController.js';
 import { protect } from '../middleware/authMiddleware.js';
 import { uploadWithErrorHandling } from '../middleware/uploadMiddleware.js';
@@ -46,6 +47,9 @@ router.get('/test-s3', protect, async (req, res) => {
 router.route('/')
   .get(getHorses)
   .post(protect, uploadWithErrorHandling, createHorse);
+
+// User's horses
+router.get('/user/:userId', getHorsesByUser);
 
 // ID-based routes
 router.route('/:id')

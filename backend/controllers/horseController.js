@@ -91,7 +91,7 @@ const relationshipManagement = {
 // @route   GET /api/horses
 // @access  Public
 const getHorses = asyncHandler(async (req, res) => {
-  const horses = await Horse.find({});
+  const horses = await Horse.find({}).populate('owner', 'username');
   res.json(horses);
 });
 
@@ -100,6 +100,7 @@ const getHorses = asyncHandler(async (req, res) => {
 // @access  Public
 const getHorseById = asyncHandler(async (req, res) => {
   const horse = await Horse.findById(req.params.id)
+    .populate('owner', 'username')
     .populate('parentage.sire', 'name color registrationNumber')
     .populate('parentage.dam', 'name color registrationNumber')
     .populate('offspring', 'name color registrationNumber');
@@ -118,11 +119,16 @@ const getHorseById = asyncHandler(async (req, res) => {
 const createHorse = asyncHandler(async (req, res) => {
   const horse = new Horse({
     ...req.body,
+    owner: req.user._id,
     imageUrl: req.file ? req.file.location : DEFAULT_HORSE_IMAGE
   });
 
   const createdHorse = await horse.save();
-  res.status(201).json(createdHorse);
+  const populatedHorse = await Horse.findById(createdHorse._id)
+    .populate('owner', 'username')
+    .populate('parentage.sire', 'name color registrationNumber')
+    .populate('parentage.dam', 'name color registrationNumber');
+  res.status(201).json(populatedHorse);
 });
 
 // @desc    Update a horse
@@ -133,11 +139,22 @@ const updateHorse = asyncHandler(async (req, res) => {
   session.startTransaction();
 
   try {
-    const horse = await Horse.findById(req.params.id);
+    const horse = await Horse.findById(req.params.id).populate('owner', 'username');
 
     if (!horse) {
       res.status(404);
       throw new Error('Horse not found');
+    }
+
+    // Check ownership - only owner or admin can modify
+    if (horse.owner._id.toString() !== req.user._id.toString() && !req.user.isAdmin) {
+      res.status(403);
+      throw new Error('Not authorized to update this horse');
+    }
+
+    // Owner can't be changed through updates
+    if (req.body.owner) {
+      delete req.body.owner;
     }
 
     // Update basic info
@@ -185,15 +202,21 @@ const updateHorse = asyncHandler(async (req, res) => {
 // @route   DELETE /api/horses/:id
 // @access  Private
 const deleteHorse = asyncHandler(async (req, res) => {
-  const horse = await Horse.findById(req.params.id);
+  const horse = await Horse.findById(req.params.id).populate('owner', 'username');
 
-  if (horse) {
-    await horse.deleteOne();
-    res.json({ message: 'Horse removed' });
-  } else {
+  if (!horse) {
     res.status(404);
     throw new Error('Horse not found');
   }
+
+  // Check ownership - only owner or admin can delete
+  if (horse.owner._id.toString() !== req.user._id.toString() && !req.user.isAdmin) {
+    res.status(403);
+    throw new Error('Not authorized to delete this horse');
+  }
+
+  await horse.deleteOne();
+  res.json({ message: 'Horse removed' });
 });
 
 // @desc    Get horse pedigree
@@ -297,6 +320,17 @@ const getHorseDescendants = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get horses by user ID
+// @route   GET /api/horses/user/:userId
+// @access  Public
+const getHorsesByUser = asyncHandler(async (req, res) => {
+  const horses = await Horse.find({ owner: req.params.userId })
+    .populate('owner', 'username')
+    .populate('parentage.sire', 'name')
+    .populate('parentage.dam', 'name');
+  res.json(horses);
+});
+
 export {
   getHorses,
   getHorseById,
@@ -304,5 +338,6 @@ export {
   updateHorse,
   deleteHorse,
   getHorsePedigree,
-  getHorseDescendants
+  getHorseDescendants,
+  getHorsesByUser
 };

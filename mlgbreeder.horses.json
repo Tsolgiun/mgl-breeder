@@ -1,5 +1,152 @@
 [{
   "_id": {
+    "$oid": "67e4fe7ea581834a4da31308"
+  },
+  "name": "Хүрэн",
+  "birthDate": "2017-03-15T00:00:00.000Z",
+  "birthPlace": "Өвөрхангай аймаг",
+  "registrationNumber": "MN2017003",
+  "microchip": "985112345678903",
+  "brand": "ӨХ",
+  "color": "Хүрэн",
+  "owner": {
+    "$oid": "67f3816ad2914f5a19f7d97f"
+  },
+  "breeder": "Б.Болд",
+  "registrationDate": "2017-04-01T00:00:00.000Z",
+  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/90f504ac319b78d86301fc60f28d98c0.jpg",
+  "parentage": {
+    "sire": {
+      "$oid": "67ebd7038014b76720b9a38b"
+    },
+    "dam": {
+      "$oid": "67ebd7038014b76720b9a38c"
+    }
+  },
+  "offspring": [
+    {
+      "$oid": "67e4fe7ea581834a4da31306"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67e4fe7ea581834a4da31306"
+  },
+  "name": "Харцага",
+  "birthDate": "2020-05-15T00:00:00.000Z",
+  "birthPlace": "Хэнтий аймаг",
+  "registrationNumber": "MN2020001",
+  "microchip": "985112345678901",
+  "brand": "ХТ",
+  "color": "Хар",
+  "owner": {
+    "$oid": "67f3816ad2914f5a19f7d97f"
+  },
+  "breeder": "Б.Болд",
+  "registrationDate": "2020-06-01T00:00:00.000Z",
+  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/1ccda0ae9b5cc8952a4d7eef6c4089b3.jpg",
+  "parentage": {
+    "sire": {
+      "$oid": "67ebb820daf90fc80320f1ca"
+    },
+    "dam": {
+      "$oid": "67e4fe7ea581834a4da31308"
+    }
+  },
+  "offspring": [
+    {
+      "$oid": "67e4fe7ea581834a4da3130e"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67e4fe7ea581834a4da31307"
+  },
+  "name": "Цагаан",
+  "birthDate": "2021-04-20T00:00:00.000Z",
+  "birthPlace": "Төв аймаг",
+  "registrationNumber": "MN2021002",
+  "microchip": "985112345678902",
+  "brand": "ТВ",
+  "color": "Цагаан",
+  "owner": {
+    "$oid": "67f38198d2914f5a19f7d988"
+  },
+  "breeder": "Д.Батбаяр",
+  "registrationDate": "2021-05-10T00:00:00.000Z",
+  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/9f9f21b635fdb1cb25231a1b952610a8.jpg",
+  "parentage": {
+    "sire": {
+      "$oid": "67e4fe7ea581834a4da3130a"
+    },
+    "dam": {
+      "$oid": "67e4fe7ea581834a4da3130d"
+    }
+  },
+  "offspring": [
+    {
+      "$oid": "67e4fe7ea581834a4da3130e"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67ebd7038014b76720b9a389"
+  },
+  "name": "Их Бүүдэн",
+  "birthDate": "2012-03-10T00:00:00.000Z",
+  "birthPlace": "Сүхбаатар аймаг",
+  "registrationNumber": "MN2012015",
+  "microchip": "985112345678910",
+  "brand": "СБ",
+  "color": "Бүүдэн",
+  "owner": {
+    "$oid": "67f381c6d2914f5a19f7d98f"
+  },
+  "breeder": "Г.Мөнхбаяр",
+  "registrationDate": "2012-04-15T00:00:00.000Z",
+  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/1ccda0ae9b5cc8952a4d7eef6c4089b3.jpg",
+  "parentage": {
+    "sire": null,
+    "dam": null
+  },
+  "offspring": [
+    {
+      "$oid": "67ebb820daf90fc80320f1ca"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67ebd7038014b76720b9a38d"
+  },
+  "name": "Хар Соёолон",
+  "birthDate": "2012-06-10T00:00:00.000Z",
+  "birthPlace": "Дундговь аймаг",
+  "registrationNumber": "MN2012019",
+  "microchip": "985112345678914",
+  "brand": "ДГ",
+  "color": "Хар",
+  "owner": {
+    "$oid": "67f38198d2914f5a19f7d988"
+  },
+  "breeder": "Д.Батбаяр",
+  "registrationDate": "2012-07-15T00:00:00.000Z",
+  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/a26f69da46f34c8bc552799463deb009.jpg",
+  "parentage": {
+    "sire": null,
+    "dam": null
+  },
+  "offspring": [
+    {
+      "$oid": "67e4fe7ea581834a4da3130d"
+    }
+  ]
+},
+{
+  "_id": {
     "$oid": "67e4fe7ea581834a4da3130b"
   },
   "name": "Хонгор",
@@ -11,8 +158,10 @@
   "microchip": "985112345678906",
   "brand": "ЗА",
   "color": "Хонгор",
-  "owner": "Д. Түмэн",
-  "breeder": "Д. Түмэн",
+  "owner": {
+    "$oid": "67f3820ad2914f5a19f7d996"
+  },
+  "breeder": "Н.Оюунбаатар",
   "registrationDate": "2012-04-30T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/5989bd2ee1db05e1623a476fd0e61037.jpg",
   "parentage": {
@@ -38,8 +187,10 @@
   "microchip": "985112345678907",
   "brand": "ДО",
   "color": "Бор",
-  "owner": "Л. Очир",
-  "breeder": "Л. Очир",
+  "owner": {
+    "$oid": "67f3820ad2914f5a19f7d996"
+  },
+  "breeder": "Н.Оюунбаатар",
   "registrationDate": "2012-06-10T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/55089f4fb9a0b13004602de281eef514.jpg",
   "parentage": {
@@ -65,8 +216,10 @@
   "microchip": "985112345678905",
   "brand": "АР",
   "color": "Зээрд",
-  "owner": "С. Бат",
-  "breeder": "С. Бат",
+  "owner": {
+    "$oid": "67f3820ad2914f5a19f7d996"
+  },
+  "breeder": "Н.Оюунбаатар",
   "registrationDate": "2016-03-20T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/107ed104221d230a6f4d5f096a2e5265.jpg",
   "parentage": {
@@ -96,8 +249,10 @@
   "microchip": "1111111111",
   "brand": "СБ",
   "color": "Бүүдэн",
-  "owner": "Жаргал",
-  "breeder": "Жаргал",
+  "owner": {
+    "$oid": "67f381c6d2914f5a19f7d98f"
+  },
+  "breeder": "Г.Мөнхбаяр",
   "registrationDate": "2017-03-01T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/1743501342695-231823507-Nokota_Horses_cropped.jpg",
   "parentage": {
@@ -106,35 +261,6 @@
     },
     "dam": {
       "$oid": "67ebd7038014b76720b9a38a"
-    }
-  },
-  "offspring": [
-    {
-      "$oid": "67e4fe7ea581834a4da31306"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "67e4fe7ea581834a4da31308"
-  },
-  "name": "Хүрэн",
-  "birthDate": "2017-03-15T00:00:00.000Z",
-  "birthPlace": "Өвөрхангай аймаг",
-  "registrationNumber": "MN2017003",
-  "microchip": "985112345678903",
-  "brand": "ӨХ",
-  "color": "Хүрэн",
-  "owner": "Г. Дорж",
-  "breeder": "Г. Дорж",
-  "registrationDate": "2017-04-01T00:00:00.000Z",
-  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/90f504ac319b78d86301fc60f28d98c0.jpg",
-  "parentage": {
-    "sire": {
-      "$oid": "67ebd7038014b76720b9a38b"
-    },
-    "dam": {
-      "$oid": "67ebd7038014b76720b9a38c"
     }
   },
   "offspring": [
@@ -156,8 +282,10 @@
   "microchip": "985112345678908",
   "brand": "ДГ",
   "color": "Саарал",
-  "owner": "П. Сүхбат",
-  "breeder": "П. Сүхбат",
+  "owner": {
+    "$oid": "67f38198d2914f5a19f7d988"
+  },
+  "breeder": "Д.Батбаяр",
   "registrationDate": "2016-03-15T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/a26f69da46f34c8bc552799463deb009.jpg",
   "parentage": {
@@ -176,139 +304,6 @@
 },
 {
   "_id": {
-    "$oid": "67e4fe7ea581834a4da31306"
-  },
-  "name": "Харцага",
-  "birthDate": "2020-05-15T00:00:00.000Z",
-  "birthPlace": "Хэнтий аймаг",
-  "registrationNumber": "MN2020001",
-  "microchip": "985112345678901",
-  "brand": "ХТ",
-  "color": "Хар",
-  "owner": "Б. Баатар",
-  "breeder": "Б. Баатар",
-  "registrationDate": "2020-06-01T00:00:00.000Z",
-  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/1ccda0ae9b5cc8952a4d7eef6c4089b3.jpg",
-  "parentage": {
-    "sire": {
-      "$oid": "67ebb820daf90fc80320f1ca"
-    },
-    "dam": {
-      "$oid": "67e4fe7ea581834a4da31308"
-    }
-  },
-  "offspring": [
-    {
-      "$oid": "67e4fe7ea581834a4da3130e"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "67e4fe7ea581834a4da31307"
-  },
-  "name": "Цагаан",
-  "birthDate": "2021-04-20T00:00:00.000Z",
-  "birthPlace": "Төв аймаг",
-  "registrationNumber": "MN2021002",
-  "microchip": "985112345678902",
-  "brand": "ТВ",
-  "color": "Цагаан",
-  "owner": "Д. Болд",
-  "breeder": "Д. Болд",
-  "registrationDate": "2021-05-10T00:00:00.000Z",
-  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/9f9f21b635fdb1cb25231a1b952610a8.jpg",
-  "parentage": {
-    "sire": {
-      "$oid": "67e4fe7ea581834a4da3130a"
-    },
-    "dam": {
-      "$oid": "67e4fe7ea581834a4da3130d"
-    }
-  },
-  "offspring": [
-    {
-      "$oid": "67e4fe7ea581834a4da3130e"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "67e4fe7ea581834a4da3130e"
-  },
-  "name": "Алаг Алаг",
-  "birthDate": "2024-02-20T00:00:00.000Z",
-  "birthPlace": "Сүхбаатар аймаг",
-  "registrationNumber": "MN2024009",
-  "microchip": "985112345678909",
-  "brand": "СБ",
-  "color": "Алаг",
-  "owner": "М. Төгс",
-  "breeder": "М. Төгс",
-  "registrationDate": "2024-03-25T00:00:00.000Z",
-  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/b76a8804306c224111b87f5e4dc785c1.jpg",
-  "parentage": {
-    "sire": {
-      "$oid": "67e4fe7ea581834a4da31306"
-    },
-    "dam": {
-      "$oid": "67e4fe7ea581834a4da31307"
-    }
-  },
-  "offspring": []
-},
-{
-  "_id": {
-    "$oid": "67ebd7038014b76720b9a389"
-  },
-  "name": "Их Бүүдэн",
-  "birthDate": "2012-03-10T00:00:00.000Z",
-  "birthPlace": "Сүхбаатар аймаг",
-  "registrationNumber": "MN2012015",
-  "microchip": "985112345678910",
-  "brand": "СБ",
-  "color": "Бүүдэн",
-  "owner": "Д. Жаргал",
-  "breeder": "Д. Жаргал",
-  "registrationDate": "2012-04-15T00:00:00.000Z",
-  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/1ccda0ae9b5cc8952a4d7eef6c4089b3.jpg",
-  "parentage": {
-    "sire": null,
-    "dam": null
-  },
-  "offspring": [
-    {
-      "$oid": "67ebb820daf90fc80320f1ca"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "67ebd7038014b76720b9a38a"
-  },
-  "name": "Хүрэн Гүү",
-  "birthDate": "2012-04-15T00:00:00.000Z",
-  "birthPlace": "Сүхбаатар аймаг",
-  "registrationNumber": "MN2012016",
-  "microchip": "985112345678911",
-  "brand": "СБ",
-  "color": "Хүрэн",
-  "owner": "Д. Жаргал",
-  "breeder": "Д. Жаргал",
-  "registrationDate": "2012-05-20T00:00:00.000Z",
-  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/90f504ac319b78d86301fc60f28d98c0.jpg",
-  "parentage": {
-    "sire": null,
-    "dam": null
-  },
-  "offspring": [
-    {
-      "$oid": "67ebb820daf90fc80320f1ca"
-    }
-  ]
-},
-{
-  "_id": {
     "$oid": "67ebd7038014b76720b9a38b"
   },
   "name": "Хар Морь",
@@ -318,8 +313,10 @@
   "microchip": "985112345678912",
   "brand": "ӨХ",
   "color": "Хар",
-  "owner": "Б. Баяр",
-  "breeder": "Б. Баяр",
+  "owner": {
+    "$oid": "67f3816ad2914f5a19f7d97f"
+  },
+  "breeder": "Б.Болд",
   "registrationDate": "2012-06-05T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/55089f4fb9a0b13004602de281eef514.jpg",
   "parentage": {
@@ -343,8 +340,10 @@
   "microchip": "985112345678913",
   "brand": "ӨХ",
   "color": "Халиун",
-  "owner": "Б. Баяр",
-  "breeder": "Б. Баяр",
+  "owner": {
+    "$oid": "67f3816ad2914f5a19f7d97f"
+  },
+  "breeder": "Б.Болд",
   "registrationDate": "2012-04-25T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/107ed104221d230a6f4d5f096a2e5265.jpg",
   "parentage": {
@@ -359,26 +358,55 @@
 },
 {
   "_id": {
-    "$oid": "67ebd7038014b76720b9a38d"
+    "$oid": "67e4fe7ea581834a4da3130e"
   },
-  "name": "Хар Соёолон",
-  "birthDate": "2012-06-10T00:00:00.000Z",
-  "birthPlace": "Дундговь аймаг",
-  "registrationNumber": "MN2012019",
-  "microchip": "985112345678914",
-  "brand": "ДГ",
-  "color": "Хар",
-  "owner": "С. Болд",
-  "breeder": "С. Болд",
-  "registrationDate": "2012-07-15T00:00:00.000Z",
-  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/a26f69da46f34c8bc552799463deb009.jpg",
+  "name": "Алаг Алаг",
+  "birthDate": "2024-02-20T00:00:00.000Z",
+  "birthPlace": "Сүхбаатар аймаг",
+  "registrationNumber": "MN2024009",
+  "microchip": "985112345678909",
+  "brand": "СБ",
+  "color": "Алаг",
+  "owner": {
+    "$oid": "67f3816ad2914f5a19f7d97f"
+  },
+  "breeder": "Б.Болд",
+  "registrationDate": "2024-03-25T00:00:00.000Z",
+  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/b76a8804306c224111b87f5e4dc785c1.jpg",
+  "parentage": {
+    "sire": {
+      "$oid": "67e4fe7ea581834a4da31306"
+    },
+    "dam": {
+      "$oid": "67e4fe7ea581834a4da31307"
+    }
+  },
+  "offspring": []
+},
+{
+  "_id": {
+    "$oid": "67ebd7038014b76720b9a38a"
+  },
+  "name": "Хүрэн Гүү",
+  "birthDate": "2012-04-15T00:00:00.000Z",
+  "birthPlace": "Сүхбаатар аймаг",
+  "registrationNumber": "MN2012016",
+  "microchip": "985112345678911",
+  "brand": "СБ",
+  "color": "Хүрэн",
+  "owner": {
+    "$oid": "67f381c6d2914f5a19f7d98f"
+  },
+  "breeder": "Г.Мөнхбаяр",
+  "registrationDate": "2012-05-20T00:00:00.000Z",
+  "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/90f504ac319b78d86301fc60f28d98c0.jpg",
   "parentage": {
     "sire": null,
     "dam": null
   },
   "offspring": [
     {
-      "$oid": "67e4fe7ea581834a4da3130d"
+      "$oid": "67ebb820daf90fc80320f1ca"
     }
   ]
 },
@@ -393,8 +421,10 @@
   "microchip": "985112345678915",
   "brand": "ДГ",
   "color": "Саарал",
-  "owner": "С. Болд",
-  "breeder": "С. Болд",
+  "owner": {
+    "$oid": "67f38198d2914f5a19f7d988"
+  },
+  "breeder": "Д.Батбаяр",
   "registrationDate": "2012-06-30T00:00:00.000Z",
   "imageUrl": "https://mglbreeder-horse-images.s3.ap-southeast-2.amazonaws.com/horses/b76a8804306c224111b87f5e4dc785c1.jpg",
   "parentage": {

@@ -15,6 +15,26 @@ const uploadApi = axios.create({
   },
 });
 
+// Add response interceptor to both instances to handle errors
+const handleResponseError = (error) => {
+  if (error.response) {
+    if (error.response.status === 403) {
+      error.message = 'You do not have permission to perform this action';
+    }
+  }
+  return Promise.reject(error);
+};
+
+api.interceptors.response.use(
+  response => response,
+  handleResponseError
+);
+
+uploadApi.interceptors.response.use(
+  response => response,
+  handleResponseError
+);
+
 // Add auth interceptor to upload instance
 uploadApi.interceptors.request.use(
   (config) => {
@@ -53,7 +73,7 @@ const loginUser = async (email, password) => {
 };
 
 const registerUser = async (username, email, password) => {
-  const { data } = await api.post('/api/users/register', { username, email, password });
+  const { data } = await api.post('/api/users', { username, email, password });
   if (data.token) {
     localStorage.setItem('token', data.token);
   }

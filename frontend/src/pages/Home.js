@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Container, Typography, Grid, Paper, Box, CircularProgress, Button } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
 import { useAuth } from '../context/AuthContext';
 import HorseCard from '../components/HorseCard';
 import HorseForm from '../components/HorseForm';
@@ -31,161 +29,196 @@ const Home = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-        <Typography variant="h4" component="h1">
-          Welcome to MGL Breeder
-        </Typography>
-        {isAuthenticated && (
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AddIcon />}
-            onClick={() => setIsNewHorseFormOpen(true)}
-          >
-            Add New Horse
-          </Button>
-        )}
-        {isAuthenticated && (
-          <Button
-            variant="outlined"
-            color="info"
-            onClick={async () => {
-              try {
-                const result = await testS3Connection();
-                setS3TestResult({ success: true, message: result.message });
-              } catch (error) {
-                setS3TestResult({ 
-                  success: false, 
-                  message: error.response?.data?.message || error.message 
-                });
-              }
-            }}
-            sx={{ ml: 2 }}
-          >
-            Test S3 Connection
-          </Button>
-        )}
-      </Box>
+    <div className="container" style={{ padding: '2rem 0' }}>
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        marginBottom: '2rem' 
+      }}>
+        <h1 style={{ 
+          fontSize: '2.5rem',
+          color: 'var(--color-secondary)'
+        }}>
+          Монгол Үржүүлэгчид
+        </h1>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          {isAuthenticated && (
+            <button
+              className="button"
+              onClick={() => setIsNewHorseFormOpen(true)}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            >
+              <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>+</span>
+              Шинээр морь бүртгүүлэх
+            </button>
+          )}
+          {isAuthenticated && (
+            <button
+              onClick={async () => {
+                try {
+                  const result = await testS3Connection();
+                  setS3TestResult({ success: true, message: result.message });
+                } catch (error) {
+                  setS3TestResult({ 
+                    success: false, 
+                    message: error.response?.data?.message || error.message 
+                  });
+                }
+              }}
+              style={{
+                border: '1px solid var(--color-secondary)',
+                backgroundColor: 'transparent',
+                color: 'var(--color-secondary)'
+              }}
+            >
+              Test S3 Connection
+            </button>
+          )}
+        </div>
+      </div>
+
       {s3TestResult && (
-        <Box sx={{ mt: 2, mb: 2 }}>
-          <Typography 
-            color={s3TestResult.success ? 'success.main' : 'error.main'}
-          >
-            {s3TestResult.message}
-          </Typography>
-        </Box>
+        <div style={{ 
+          marginBottom: '2rem',
+          padding: '1rem',
+          backgroundColor: s3TestResult.success ? 'rgba(0, 128, 0, 0.1)' : 'rgba(255, 0, 0, 0.1)',
+          color: s3TestResult.success ? 'darkgreen' : 'darkred',
+          borderRadius: '4px'
+        }}>
+          {s3TestResult.message}
+        </div>
       )}
 
-      {/* Horse Cards Grid */}
-      <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
-        Featured Horses
-      </Typography>
+      <h2 style={{ 
+        fontSize: '1.8rem',
+        color: 'var(--color-secondary)',
+        marginBottom: '2rem'
+      }}>
+        Бүртгэлтэй Адуу
+      </h2>
       
       {loading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
-          <CircularProgress />
-        </Box>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center',
+          padding: '3rem'
+        }}>
+          <div className="loading-spinner"></div>
+        </div>
       ) : error ? (
-        <Typography color="error" sx={{ my: 2 }}>{error}</Typography>
-      ) : horses.length > 0 ? (
-        <Box 
-          sx={{ 
-            columns: { xs: '1', sm: '2', md: '3' }, 
-            gap: 3,
-            mb: 4
-          }}
-        >
-          {horses.map((horse) => (
-            <Box key={horse._id} sx={{ mb: 3, breakInside: 'avoid' }}>
-              <HorseCard horse={horse} />
-            </Box>
-          ))}
-        </Box>
+        <div style={{ 
+          color: '#dc3545',
+          padding: '1rem',
+          backgroundColor: 'rgba(220, 53, 69, 0.1)',
+          borderRadius: '4px',
+          marginBottom: '2rem'
+        }}>
+          {error}
+        </div>
       ) : (
-        // Show preview cards if no horses are in the database yet
-        <Box 
-          sx={{ 
-            columns: { xs: '1', sm: '2', md: '3' }, 
-            gap: 3,
-            mb: 4
-          }}
-        >
-          {[...Array(9)].map((_, index) => (
-            <Box key={index} sx={{ mb: 3, breakInside: 'avoid' }}>
+        <div className="horse-grid">
+          {horses.length > 0 ? 
+            horses.map((horse) => (
+              <HorseCard key={horse._id} horse={horse} />
+            )) :
+            [...Array(9)].map((_, index) => (
               <HorseCard 
+                key={index}
                 horse={`/assets/images/horse/${['1ccda0ae9b5cc8952a4d7eef6c4089b3.jpg', '9f9f21b635fdb1cb25231a1b952610a8.jpg', '90f504ac319b78d86301fc60f28d98c0.jpg', '107ed104221d230a6f4d5f096a2e5265.jpg', '5989bd2ee1db05e1623a476fd0e61037.jpg', '55089f4fb9a0b13004602de281eef514.jpg', 'a26f69da46f34c8bc552799463deb009.jpg', 'b76a8804306c224111b87f5e4dc785c1.jpg', 'd8b73d9777e1ae2344ec85cd49f41be4.jpg'][index % 9]}`} 
                 previewOnly={true}
               />
-            </Box>
-          ))}
-        </Box>
+            ))
+          }
+        </div>
       )}
 
       {/* Dashboard Section - Only shown when authenticated */}
       {auth && (
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
-            <Paper
-              sx={{
-                p: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: 240,
-              }}
-            >
-              <Typography variant="h6" gutterBottom>
-                Your Breeding Dashboard
-              </Typography>
-              <Box>
-                <Typography variant="body1">
-                <Box display="flex" justifyContent="space-between" alignItems="center">
-                  <Typography variant="body1">
-                    Welcome back, {auth.username}! Your breeding journey continues here.
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    startIcon={<AddIcon />}
-                    onClick={() => setIsNewHorseFormOpen(true)}
-                  >
-                    Add New Horse
-                  </Button>
-                </Box>
-                </Typography>
-              </Box>
-            </Paper>
-          </Grid>
+        <div style={{ 
+          display: 'grid',
+          gridTemplateColumns: 'repeat(12, 1fr)',
+          gap: '2rem',
+          marginTop: '3rem'
+        }}>
+          <div style={{ 
+            gridColumn: 'span 8',
+            backgroundColor: 'var(--color-white)',
+            borderRadius: '8px',
+            padding: '2rem',
+            boxShadow: 'var(--shadow-medium)'
+          }}>
+            <h3 style={{ 
+              color: 'var(--color-secondary)',
+              marginBottom: '1.5rem'
+            }}>
+              Your Breeding Dashboard
+            </h3>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <p style={{ color: 'var(--color-text)' }}>
+                Welcome back, {auth.username}! Your breeding journey continues here.
+              </p>
+              <button
+                className="button"
+                onClick={() => setIsNewHorseFormOpen(true)}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+              >
+                <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>+</span>
+                Add New Horse
+              </button>
+            </div>
+          </div>
           
-          <Grid item xs={12} md={4}>
-            <Paper
-              sx={{
-                p: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: 240,
-              }}
-            >
-              <Typography variant="h6" gutterBottom>
-                Quick Stats
-              </Typography>
-              <Typography variant="body2">
-                View your breeding statistics and progress here.
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
+          <div style={{ 
+            gridColumn: 'span 4',
+            backgroundColor: 'var(--color-white)',
+            borderRadius: '8px',
+            padding: '2rem',
+            boxShadow: 'var(--shadow-medium)'
+          }}>
+            <h3 style={{ 
+              color: 'var(--color-secondary)',
+              marginBottom: '1.5rem'
+            }}>
+              Quick Stats
+            </h3>
+            <p style={{ color: 'var(--color-text)' }}>
+              View your breeding statistics and progress here.
+            </p>
+          </div>
+        </div>
       )}
+
+      <style jsx="true">{`
+        .loading-spinner {
+          width: 40px;
+          height: 40px;
+          border: 3px solid var(--color-background);
+          border-radius: 50%;
+          border-top-color: var(--color-secondary);
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+
       <HorseForm
         open={isNewHorseFormOpen}
         onClose={() => setIsNewHorseFormOpen(false)}
         onUpdate={async () => {
-          // Refresh the horses list after adding a new one
           const { data } = await api.get('/api/horses');
           setHorses(data);
         }}
       />
-    </Container>
+    </div>
   );
 };
 

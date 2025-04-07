@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "67f3816ad2914f5a19f7d97f"
+  },
+  "username": "Анхаа",
+  "email": "ankhaa@gmail.com",
+  "password": "$2a$10$qMKE78zdIdSV2shL9Hre5.Uh/WNHQGsCEt3y1TwOl7bSSLvIDzs7a",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2025-04-07T07:40:26.460Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T07:40:26.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f38198d2914f5a19f7d988"
+  },
+  "username": "Баяраа",
+  "email": "bayraa@gmail.com",
+  "password": "$2a$10$7ywfZGhmtx0wmC3UIfqXeu19HX.lFrKRi2z2v91L8vuVQNXf1NIha",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2025-04-07T07:41:12.629Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T07:41:12.629Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f381c6d2914f5a19f7d98f"
+  },
+  "username": "Будбилэг",
+  "email": "budbileg@example.com",
+  "password": "$2a$10$vOv784XeLWQcav6ztUbG1uXZo/MprMVwk7/dIhpujgMWedkSp0bE2",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2025-04-07T07:41:58.709Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T07:41:58.709Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f3820ad2914f5a19f7d996"
+  },
+  "username": "Түшиг",
+  "email": "tushig@example.com",
+  "password": "$2a$10$k84CYqko.X7lLtemH892f.QvS2RUUyY2qG95ZGAoJFIkQSbMoCIMe",
+  "isAdmin": false,
+  "createdAt": {
+    "$date": "2025-04-07T07:43:06.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T07:43:06.391Z"
+  },
+  "__v": 0
+}]
