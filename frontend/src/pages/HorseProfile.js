@@ -181,17 +181,25 @@ const HorseProfile = () => {
 
           {/* Pedigree View */}
           {activeTab === 1 && (
-            <div className="card">
-              <h3>Удам угсаа</h3>
-              <PedigreeTree pedigree={pedigree} type="ancestors" />
+            <div className="pedigree-container">
+              <div className="card pedigree-card">
+                <h3 className="pedigree-title">Удам угсаа</h3>
+                <div className="pedigree-content">
+                  <PedigreeTree pedigree={pedigree} type="ancestors" />
+                </div>
+              </div>
             </div>
           )}
 
           {/* Descendants View */}
           {activeTab === 2 && (
-            <div className="card">
-              <h3>Үр удам</h3>
-              <PedigreeTree pedigree={descendants} type="descendants" />
+            <div className="pedigree-container">
+              <div className="card pedigree-card">
+                <h3 className="pedigree-title">Үр удам</h3>
+                <div className="pedigree-content">
+                  <PedigreeTree pedigree={descendants} type="descendants" />
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -395,6 +403,35 @@ const HorseProfile = () => {
           }
         }
 
+        .pedigree-container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+
+        .pedigree-card {
+          background: var(--color-white);
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          margin: 1rem 0;
+          overflow: hidden;
+        }
+
+        .pedigree-title {
+          padding: 1rem;
+          margin: 0;
+          border-bottom: 1px solid var(--color-background);
+          font-size: 1.25rem;
+          color: var(--color-secondary);
+        }
+
+        .pedigree-content {
+          padding: 1rem;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
         @media (max-width: 480px) {
           .image-container {
             height: 300px;
@@ -407,6 +444,20 @@ const HorseProfile = () => {
 
           .tab-button {
             width: 100%;
+          }
+
+          .pedigree-container {
+            padding: 0 0.5rem;
+          }
+
+          .pedigree-content {
+            padding: 0.5rem;
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .pedigree-container {
+            padding: 0 2rem;
           }
         }
       `}</style>

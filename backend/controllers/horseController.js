@@ -229,14 +229,15 @@ const getHorsePedigree = asyncHandler(async (req, res) => {
     if (!id || level >= generations) return null;
 
     const horse = await Horse.findById(id)
-      .select('name color registrationNumber birthDate parentage')
+      .select('name color registrationNumber birthDate parentage imageUrl owner breeder')
+      .populate('owner', 'username')
       .populate({
         path: 'parentage.sire',
-        select: 'name color registrationNumber birthDate parentage'
+        select: 'name color registrationNumber birthDate parentage imageUrl'
       })
       .populate({
         path: 'parentage.dam',
-        select: 'name color registrationNumber birthDate parentage'
+        select: 'name color registrationNumber birthDate parentage imageUrl'
       })
       .lean();
 
@@ -257,6 +258,7 @@ const getHorsePedigree = asyncHandler(async (req, res) => {
         color: sire.color,
         registrationNumber: sire.registrationNumber,
         birthDate: sire.birthDate,
+        imageUrl: sire.imageUrl,
         ...(await getPedigreeRecursive(sire._id, level + 1))
       } : null,
       dam: dam ? {
@@ -265,6 +267,7 @@ const getHorsePedigree = asyncHandler(async (req, res) => {
         color: dam.color,
         registrationNumber: dam.registrationNumber,
         birthDate: dam.birthDate,
+        imageUrl: dam.imageUrl,
         ...(await getPedigreeRecursive(dam._id, level + 1))
       } : null
     };
@@ -290,7 +293,8 @@ const getHorseDescendants = asyncHandler(async (req, res) => {
     if (!id || level >= generations) return null;
 
     const horse = await Horse.findById(id)
-      .select('name color registrationNumber birthDate offspring');
+      .select('name color registrationNumber birthDate offspring imageUrl owner breeder')
+      .populate('owner', 'username');
 
     if (!horse) return null;
 
@@ -306,6 +310,7 @@ const getHorseDescendants = asyncHandler(async (req, res) => {
       color: horse.color,
       registrationNumber: horse.registrationNumber,
       birthDate: horse.birthDate,
+      imageUrl: horse.imageUrl,
       offspring: descendants.filter(d => d !== null)
     };
   };
